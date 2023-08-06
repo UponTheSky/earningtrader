@@ -1,0 +1,47 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+# references:
+#  - https://github.com/mlflow/mlflow/blob/master/.pre-commit-config.yaml
+#  - https://pdm.fming.dev/latest/usage/advanced/#hooks-for-pre-commit
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.2.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - id: check-added-large-files
+
+- repo: local
+  hooks:
+    - id: ruff
+      name: ruff
+      entry: ruff
+      language: system
+      types: [python]
+      stages: [commit]
+
+- repo: local
+  hooks:
+    - id: black
+      name: black
+      entry: black
+      language: system
+      types: [python]
+      stages: [commit]
+
+- repo: https://github.com/pdm-project/pdm
+  rev: 2.8.2
+  hooks:
+    - id: pdm-lock-check
+
+    - id: pdm-export
+      name: export requirements.txt with '--dev' option(for CI/CD testing/linter)
+      args: ['-o', 'requirements.dev.txt', '--without-hashes', '--dev']
+      files: ^pdm.lock$
+
+    - id: pdm-export
+      name: export requirements.txt with '--prod' option(for CI/CD package build)
+      args: ['-o', 'requirements.prod.txt', '--without-hashes', '--prod']
+      files: ^pdm.lock$
