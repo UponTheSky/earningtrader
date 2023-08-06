@@ -1,0 +1,17 @@
+[project]
+name = "rl-trader"
+version = "0.1.0"
+description = "A trading platform based on the Reinforcement Learning framework"
+authors = [
+    {name = "UponTheSky", email = "sailing.to.orbis@gmail.com"},
+]
+dependencies = [
+    "yfinance>=0.2.27",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "()"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
