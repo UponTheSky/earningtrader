@@ -1,6 +1,6 @@
 [project]
 name = "rl-trader"
-version = "0.1.0"
+version = "0.0.0"
 description = "A trading platform based on the Reinforcement Learning framework"
 authors = [
     {name = "UponTheSky", email = "sailing.to.orbis@gmail.com"},
@@ -10,8 +10,19 @@ dependencies = [
 ]
 requires-python = ">=3.9"
 readme = "README.md"
-license = {text = "()"}
+# currently it is not an open source, so we won't have any license
 
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=7.4.0",
+]
+lint = [
+    "ruff>=0.0.282",
+]
+format = [
+    "black>=23.7.0",
+]
