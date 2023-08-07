@@ -1,0 +1,9 @@
+name: test
+description: test python project with pytest
+
+runs:
+  using: composite
+  steps:
+    - name: run pytest
+      run: pytest
+      shell: bash
