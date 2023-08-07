@@ -1,0 +1,20 @@
+name: 'Python Push Check'
+
+on:
+  push:
+    paths:
+      - '**.py'
+
+# reference: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+jobs:
+  check-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repo
+        uses: actions/checkout@v3
+      - name: run Python dependencies action
+        uses: ./.github/actions/python_dependencies
+        with:
+          python-version: '3.9'
+      - name: run Python unit test action
+        uses: ./.github/actions/python_test
