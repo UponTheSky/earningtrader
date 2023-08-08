@@ -26,7 +26,7 @@ class YFinanceFetcher(DataFetcherInterface):
             return yf.Ticker(ticker).history(period=period)
 
         except Exception as error:
-            self._log(message=str(error))
+            self._log(message=str(error), level="INFO")
             raise
 
     def _log(self, *, message: str, level: str) -> None:

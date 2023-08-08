@@ -1,6 +1,7 @@
 import pytest
 
 import pandas as pd
+import numpy as np
 
 from rl_trader.data.preprocessing.preprocessor import DataPreprocessor
 from rl_trader.common.exceptions import ValidationError
@@ -36,3 +37,24 @@ def test_rearranged_raises_error(
             input=pd.DataFrame([[0] * len(input_index)], columns=input_index),
             data_schema=pd.Index(data_schema),
         )
+
+
+def test_excluding_missing_values(preprocessor: DataPreprocessor):
+    input = pd.DataFrame([[1, None], [np.nan, 2], [3, 4]], columns=["a", "b"])
+
+    handled_data = preprocessor.handle_missing_values(input=input, option="exclude")
+    handled_data
+    assert handled_data.to_dict(orient="list") == pd.DataFrame(
+        [[3.0, 4.0]], columns=["a", "b"]
+    ).to_dict(orient="list")
+
+
+def test_replacing_missing_values(preprocessor: DataPreprocessor):
+    input = pd.DataFrame([[1, None], [np.nan, 2], [3, 4]], columns=["a", "b"])
+
+    handled_data = preprocessor.handle_missing_values(
+        input=input, option="replace", replace_value=0
+    )
+    assert handled_data.to_dict(orient="list") == pd.DataFrame(
+        [[1.0, 0.0], [0.0, 2.0], [3.0, 4.0]], columns=["a", "b"]
+    ).to_dict(orient="list")
