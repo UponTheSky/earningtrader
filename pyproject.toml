@@ -26,3 +26,6 @@ lint = [
 format = [
     "black>=23.7.0",
 ]
+
+[tool.pdm.scripts]
+test = "pytest tests"
