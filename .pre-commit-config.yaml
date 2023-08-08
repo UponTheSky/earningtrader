@@ -35,13 +35,3 @@ repos:
   rev: 2.8.2
   hooks:
     - id: pdm-lock-check
-
-    - id: pdm-export
-      name: export requirements.txt with '--dev' option(for CI/CD testing/linter)
-      args: ['-o', 'requirements.dev.txt', '--without-hashes', '--dev']
-      files: ^pdm.lock$
-
-    - id: pdm-export
-      name: export requirements.txt with '--prod' option(for CI/CD package build)
-      args: ['-o', 'requirements.prod.txt', '--without-hashes', '--prod']
-      files: ^pdm.lock$
