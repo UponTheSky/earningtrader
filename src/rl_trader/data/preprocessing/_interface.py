@@ -1,5 +1,5 @@
 from typing import Literal, Any
-from abc import ABC, abstractmethod, abstractstaticmethod
+from abc import ABC, abstractmethod
 
 import pandas as pd
 
@@ -11,9 +11,9 @@ class DataPreprocessorInterface(ComponentBaseInterface, ABC):
     The interface for the data preprocessing components.
     """
 
-    @abstractstaticmethod
+    @abstractmethod
     def rearrange_raw_data(
-        *, input: pd.DataFrame, data_schema: pd.Index
+        *, self, input: pd.DataFrame, data_schema: pd.Index
     ) -> pd.DataFrame:
         """
         Check whether the input data satisfies the schema provided.
@@ -22,9 +22,10 @@ class DataPreprocessorInterface(ComponentBaseInterface, ABC):
         """
         ...
 
-    @abstractstaticmethod
+    @abstractmethod
     def handle_missing_values(
         *,
+        self,
         input: pd.DataFrame,
         option: Literal["exclude", "replace"],
         replace_value: Any,
