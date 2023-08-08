@@ -2,8 +2,8 @@ import pytest
 
 import pandas as pd
 
-from src.rl_trader.common.decorators import rearranged
-from src.rl_trader.common.exceptions import ValidationError
+from rl_trader.common.decorators import rearranged
+from rl_trader.common.exceptions import ValidationError
 
 
 @pytest.mark.parametrize(
