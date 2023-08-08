@@ -7,7 +7,7 @@ from rl_trader.common.interface import ComponentBaseInterface
 
 class DataFetcherInterface(ComponentBaseInterface, ABC):
     """
-    The interface for data fetchers.
+    The interface for the data fetchers.
     """
 
     @abstractmethod
