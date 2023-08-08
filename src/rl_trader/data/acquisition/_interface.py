@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 import pandas as pd
 
-from rl_trader.interface import ComponentBaseInterface
+from rl_trader.common.interface import ComponentBaseInterface
 
 
 class DataFetcherInterface(ComponentBaseInterface, ABC):
