@@ -5,5 +5,5 @@ runs:
   using: composite
   steps:
     - name: run pytest
-      run: pytest
+      run: pdm run -v pytest tests
       shell: bash
