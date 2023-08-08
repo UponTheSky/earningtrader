@@ -34,7 +34,10 @@ class DataPreprocessorInterface(ComponentBaseInterface, ABC):
         Handles missing values in the pd.DataFrame(NaN).
 
         So this function is a wrapper of the more general APIs explained here
-        in this guide: https://pandas.pydata.org/docs/user_guide/missing_data.html
+        in this guide: https://pandas.pydata.org/docs/user_guide/missing_data.html.
+
+        Note that when the option is 'exclude', any value passed to
+        'replace_value' parameter will be ignored.
         """
         ...
 

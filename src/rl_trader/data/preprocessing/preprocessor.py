@@ -14,7 +14,7 @@ class DataPreprocessor(DataPreprocessorInterface):
         self._logger = logging.getLogger(self.__class__.__name__)
 
     def rearrange_raw_data(
-        *, self, input: pd.DataFrame, data_schema: pd.Index
+        self, *, input: pd.DataFrame, data_schema: pd.Index
     ) -> pd.DataFrame:
         try:
             if not data_schema.difference(input.columns).empty:
@@ -24,18 +24,26 @@ class DataPreprocessor(DataPreprocessorInterface):
                 )
 
             input.drop(columns=input.columns.difference(data_schema), inplace=True)
+            return input
         except Exception as error:
-            self._log(message=str(error))
+            self._log(message=str(error), level="INFO")
             raise
 
     def handle_missing_values(
-        *,
         self,
+        *,
         input: pd.DataFrame,
         option: Literal["exclude", "replace"],
-        replace_value: Any,
+        replace_value: Any = None,
     ) -> pd.DataFrame:
-        ...
+        if option == "exclude":
+            input.dropna(axis=0, inplace=True)  # axis=0: drop raws
+        elif option == "replace":
+            input.fillna(value=replace_value, inplace=True)
+        else:
+            raise NotImplementedError(f"The option {option} is not implemented.")
+
+        return input
 
     def _log(self, *, message: str, level: str) -> None:
         # TODO: use the custom logger
