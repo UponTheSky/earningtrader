@@ -1,9 +1,8 @@
 from typing import Literal
 import logging  # TODO: replace with the custom logger
 
-import yfinance as yf
-
 import pandas as pd
+import yfinance as yf
 
 from ._interface import DataFetcherInterface
 
