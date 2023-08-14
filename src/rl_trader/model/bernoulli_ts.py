@@ -21,7 +21,6 @@ class BernTSState(State):
 
         # i.i.d. beta distribution
         assert self._parameters.shape == (len(set(action_ids)), 2)
-        print(self._parameters.shape, action_ids)
 
         self._index_to_action_id = dict(enumerate(action_ids))
         self._action_id_to_index = dict(

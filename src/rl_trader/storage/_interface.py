@@ -40,3 +40,11 @@ class StorageInterface(ComponentBaseInterface, ABC):
         Clear the database; i.e. delete all the (key, value) pairs in it.
         """
         ...
+
+    @abstractmethod
+    def __repr__(self) -> str:
+        ...
+
+    @abstractmethod
+    def _log(self) -> None:
+        ...
