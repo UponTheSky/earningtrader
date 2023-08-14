@@ -28,3 +28,17 @@ class FileLoggerInterface(ABC):
         Log the message at the given log level.
         """
         ...
+
+    @property
+    @abstractmethod
+    def filepath(self) -> str:
+        """
+        The filepath where the logs are stored.
+        """
+        ...
+
+    @abstractmethod
+    def close_file(self) -> None:
+        """
+        Close the file.
+        """
