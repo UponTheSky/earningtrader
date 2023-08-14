@@ -3,10 +3,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
-from rl_trader.common.interface import ComponentBaseInterface
 
-
-class RLTradingModelInterface(ComponentBaseInterface, ABC):
+class RLTradingModelInterface(ABC):
     """
     The interface for RL trading models.
     """
@@ -29,14 +27,6 @@ class RLTradingModelInterface(ComponentBaseInterface, ABC):
         """
         Earn the reward as the result of the action taken, and update the parameter.
         """
-        ...
-
-    @abstractmethod
-    def __repr__(self) -> str:
-        ...
-
-    @abstractmethod
-    def _log(self) -> None:
         ...
 
 

@@ -2,10 +2,8 @@ from abc import ABC, abstractmethod
 
 import pandas as pd
 
-from rl_trader.common.interface import ComponentBaseInterface
 
-
-class DataFetcherInterface(ComponentBaseInterface, ABC):
+class DataFetcherInterface(ABC):
     """
     The interface for the data fetchers.
     """
@@ -16,11 +14,3 @@ class DataFetcherInterface(ComponentBaseInterface, ABC):
         Fetch the data according to a given list of options.
         """
         ...
-
-    @abstractmethod
-    def _log(self, *, message: str, level: str) -> None:
-        ...
-
-    @abstractmethod
-    def __repr__(self) -> str:
-        super().__repr__()

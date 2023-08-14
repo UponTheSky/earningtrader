@@ -100,12 +100,3 @@ class BernTSTradingModel(RLTradingModelInterface):
     @property
     def state(self) -> BernTSState:
         return self._state
-
-    def __repr__(self) -> str:
-        return (
-            f"{self.__class__.__name__} - "
-            "actions: {', '.join((action.key for action in self._actions))}"
-        )
-
-    def _log(self) -> str:
-        raise NotImplementedError()

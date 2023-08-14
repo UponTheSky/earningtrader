@@ -1,10 +1,8 @@
 from typing import Any
 from abc import ABC, abstractmethod
 
-from rl_trader.common.interface import ComponentBaseInterface
 
-
-class StorageInterface(ComponentBaseInterface, ABC):
+class StorageInterface(ABC):
     """
     The interface for the storage components.
 
@@ -39,12 +37,4 @@ class StorageInterface(ComponentBaseInterface, ABC):
         """
         Clear the database; i.e. delete all the (key, value) pairs in it.
         """
-        ...
-
-    @abstractmethod
-    def __repr__(self) -> str:
-        ...
-
-    @abstractmethod
-    def _log(self) -> None:
         ...
