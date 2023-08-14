@@ -49,9 +49,3 @@ class ShelveStorage(StorageInterface):
 
     def _open_db(self) -> shelve.Shelf[Any]:
         return shelve.open(filename=self._db_path, writeback=True)
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}"
-
-    def _log(self) -> None:
-        ...

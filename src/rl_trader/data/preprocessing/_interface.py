@@ -3,10 +3,8 @@ from abc import ABC, abstractmethod
 
 import pandas as pd
 
-from rl_trader.common.interface import ComponentBaseInterface
 
-
-class DataPreprocessorInterface(ComponentBaseInterface, ABC):
+class DataPreprocessorInterface(ABC):
     """
     The interface for the data preprocessing components.
     """
@@ -40,11 +38,3 @@ class DataPreprocessorInterface(ComponentBaseInterface, ABC):
         'replace_value' parameter will be ignored.
         """
         ...
-
-    @abstractmethod
-    def _log(self, *, message: str, level: str) -> None:
-        ...
-
-    @abstractmethod
-    def __repr__(self) -> str:
-        super().__repr__()
