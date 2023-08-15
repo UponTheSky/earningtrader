@@ -11,7 +11,7 @@ class TraderInterface(ABC):
     _api_base_url: str
 
     @abstractmethod
-    def make_request(self, *, item: Sequence[str]) -> dict[str, Any]:
+    def make_request(self, *, items: Sequence[str]) -> dict[str, Any]:
         """
         Make API requests to the external API vendor(s) and get the actual response.
         """
