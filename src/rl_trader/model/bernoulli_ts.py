@@ -3,10 +3,20 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from ._interface import RLTradingModelInterface, State, Reward, Action
+from ._interface import (
+    RLTradingModelInterface,
+    StateInterface,
+    RewardInterface,
+    ActionInterface,
+)
 
 
-class BernTSState(State):
+class BernTSState(StateInterface):
+    """
+    An implementation of a state in RL, dedicated to the simple
+    Bernoulli Thompson Sampling strategy.
+    """
+
     _parameters: np.ndarray
     _index_to_action_id: dict[int, str]
     _action_id_to_index: dict[str, int]
@@ -48,7 +58,7 @@ class BernTSState(State):
 
 
 @dataclass(frozen=True)
-class BernTSAction(Action):
+class BernTSAction(ActionInterface):
     """
     Args:
       - id: the identifier used internally in the platform.
@@ -60,7 +70,7 @@ class BernTSAction(Action):
 
 
 @dataclass(frozen=True)
-class BernTSReward(Reward):
+class BernTSReward(RewardInterface):
     """
     Args:
       - action_id: the id of the choosen action

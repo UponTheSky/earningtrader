@@ -1,69 +1,54 @@
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
+
+from rl_trader.data.acquisition import DataFetcherInterface
+from rl_trader.data.preprocessing import DataPreprocessorInterface
+from rl_trader.model import (
+    StateInterface,
+    ActionInterface,
+    RewardInterface,
+    RLTradingModelInterface,
+)
+from rl_trader.storage import StorageInterface
+from rl_trader.trader import TraderInterface
 
 
-class State(ABC):
+class ControllerInterface(ABC):
     """
-    A representation of a single unit of the current entire state.
-    """
-
-    ...
-
-
-@dataclass(frozen=True)
-class Action(ABC):
-    """
-    Actions to be taken by the algorithm.
-    """
-
-    id: str
-    ...
-
-
-@dataclass(frozen=True)
-class Reward(ABC):
-    """
-    The value of the reward earned as the result of the taken action.
+    The interface for the central component controlling the other components.
     """
 
-    action_id: str
-    ...
-
-
-class RLTradingModelInterface(ABC):
-    """
-    The interface for RL trading models.
-    """
-
-    _state: State
-
-    @property
-    def state(self) -> State:
-        ...
+    _data_fetcher: DataFetcherInterface
+    _data_preprocessor: DataPreprocessorInterface
+    _actions: set[ActionInterface]
+    _model: RLTradingModelInterface
+    _trader: TraderInterface
+    _storage: StorageInterface
 
     @abstractmethod
-    def take_action(self) -> Action:
+    def observe_state(self) -> StateInterface:
         """
-        Take an action based on the current parameters and the state given.
+        A factory method for converting external data into a defined state.
         """
         ...
 
     @abstractmethod
-    def earn_reward(self, *, reward: Reward) -> None:
+    def choose_action(self, *, observed_state: StateInterface) -> ActionInterface:
         """
-        Earn the reward as the result of the action taken, and update the parameter.
+        Given the observed state, choose the action using the RL model.
         """
         ...
 
-
-class TraderInterface(ABC):
-    """
-    The interface for the trade component.
-    """
-
-    def trade(*, action: Action) -> Reward:
+    @abstractmethod
+    def make_trade(self, *, action: ActionInterface) -> RewardInterface:
         """
-        Take the action determined from the model step, and
+        Take the action determined from the model, and
         return the reward from the actual trading.
+        """
+        ...
+
+    @abstractmethod
+    def save_reward(self, reward: RewardInterface) -> None:
+        """
+        Save the reward to assess the performance of the model.
         """
         ...

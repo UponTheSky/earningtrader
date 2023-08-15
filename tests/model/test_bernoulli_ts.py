@@ -3,7 +3,7 @@ from unittest import mock
 import pytest
 import numpy as np
 
-from rl_trader.controller.bernoulli_ts import (
+from rl_trader.model.bernoulli_ts import (
     BernTSTradingModel,
     BernTSState,
     BernTSAction,
