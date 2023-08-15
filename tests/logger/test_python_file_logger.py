@@ -3,7 +3,7 @@ import logging
 
 import pytest
 
-from rl_trader.common.step._logger import PythonFileLogger
+from rl_trader.controller._logger import PythonFileLogger
 
 
 @pytest.fixture

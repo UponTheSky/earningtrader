@@ -1,28 +1,16 @@
 from abc import ABC, abstractmethod
 
-from rl_trader.data.acquisition import DataFetcherInterface
-from rl_trader.data.preprocessing import DataPreprocessorInterface
 from rl_trader.model import (
     StateInterface,
     ActionInterface,
     RewardInterface,
-    RLTradingModelInterface,
 )
-from rl_trader.storage import StorageInterface
-from rl_trader.trader import TraderInterface
 
 
 class ControllerInterface(ABC):
     """
     The interface for the central component controlling the other components.
     """
-
-    _data_fetcher: DataFetcherInterface
-    _data_preprocessor: DataPreprocessorInterface
-    _actions: set[ActionInterface]
-    _model: RLTradingModelInterface
-    _trader: TraderInterface
-    _storage: StorageInterface
 
     @abstractmethod
     def observe_state(self) -> StateInterface:
@@ -47,8 +35,34 @@ class ControllerInterface(ABC):
         ...
 
     @abstractmethod
-    def save_reward(self, reward: RewardInterface) -> None:
+    def save_reward(self, *, reward: RewardInterface) -> None:
         """
         Save the reward to assess the performance of the model.
         """
+        ...
+
+
+class ControllerBuilderInterface(ABC):
+    @abstractmethod
+    def initialize(self) -> None:
+        ...
+
+    @abstractmethod
+    def set_data_fetcher(self, *args, **kwargs) -> None:
+        ...
+
+    @abstractmethod
+    def set_data_preprocessor(self, *args, **kwargs) -> None:
+        ...
+
+    @abstractmethod
+    def set_trading_model(self, *args, **kwargs) -> None:
+        ...
+
+    @abstractmethod
+    def set_trader(self, *args, **kwargs) -> None:
+        ...
+
+    @abstractmethod
+    def set_storage(self, *args, **kwargs) -> None:
         ...

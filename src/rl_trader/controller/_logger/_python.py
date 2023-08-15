@@ -28,7 +28,7 @@ class PythonFileLogger(FileLoggerInterface):
     def log(self, *, message: Exception, log_level: int) -> None:
         ...
 
-    def log(self, *, message, log_level) -> None:
+    def log(self, *, message, log_level=logging.INFO) -> None:
         if isinstance(message, Exception):
             self._logger.exception(msg=message, stack_info=True)
 

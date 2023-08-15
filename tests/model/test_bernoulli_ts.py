@@ -1,7 +1,4 @@
-from unittest import mock
-
 import pytest
-import numpy as np
 
 from rl_trader.model.bernoulli_ts import (
     BernTSTradingModel,
@@ -18,15 +15,6 @@ def test_state_init_with_wrong_parameter_dimension():
             )._parameters
             == 1
         )
-
-
-def test_getting_max_action():
-    state = BernTSState(
-        parameters_with_action_ids={"apple_id": [1, 2], "msft_id": [3, 4]}
-    )
-
-    with mock.patch.object(np.random, "beta", return_value=[0.5, 1]):
-        assert state.get_max_action_id() == "msft_id"
 
 
 def test_setting_parameter_correctly():

@@ -42,7 +42,7 @@ class BernTSState(StateInterface):
         Sample from the current i.i.d. beta distribution, and select the action of
         the maximum probability density function value.
         """
-        max_index = np.argmax(np.random.beta(self._parameters))
+        max_index = np.argmax(np.random.beta(a=a, b=b) for a, b in self._parameters)
         return self._index_to_action_id[max_index]
 
     def set_parameter(self, *, action_id: str, reward: float) -> None:
