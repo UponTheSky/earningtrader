@@ -39,7 +39,7 @@ class BernTSController(ControllerInterface):
             message_format="[log]: %(asctime)s %(message)s",
         )
 
-        self._stdout_logger = PythonFileLogger(
+        self._stderr_logger = PythonFileLogger(
             logger_name="bern_ts_controller_stderr_logger",
             filepath="bern_ts_stderr.log",
             message_format="[error]: %(asctime)s %(message)s",
@@ -167,8 +167,8 @@ class BernTSControllerBuilder(ControllerBuilderInterface):
         self._controller._trader = SimulationTrader()
 
     def set_storage(self) -> None:
-        storage = ShelveStorage(db_path="temp_storage.db")
-        storage.store_data(key="previous_buy_price", value=0.0)
+        storage = ShelveStorage(db_path="temp_storage.shelve")
+        storage.store_data(key="previous_buy_price", value=100.0)
         storage.store_data(key="reward_history", value=[])
 
         self._controller._storage = storage

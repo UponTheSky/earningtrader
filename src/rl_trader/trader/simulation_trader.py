@@ -12,4 +12,4 @@ class SimulationTrader(TraderInterface):
 
     def make_request(self, *, tickers: Sequence[str]) -> dict[str, Any]:
         # measure the close price of yesterday
-        return {"total_close_price": sum(random.uniform(100, 300))}
+        return {"total_close_price": random.uniform(100, 300)}

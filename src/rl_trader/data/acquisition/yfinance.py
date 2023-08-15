@@ -14,7 +14,5 @@ class YFinanceFetcher(DataFetcherInterface):
     APIs directly: see https://financeapi.net/.
     """
 
-    def fetch_history_data(
-        self, *, ticker_name: str, period: Literal["1d"]
-    ) -> pd.DataFrame:
-        return yf.Ticker(ticker_name).history(period=period)
+    def fetch_history_data(self, *, ticker: str, period: Literal["1d"]) -> pd.DataFrame:
+        return yf.Ticker(ticker).history(period=period)

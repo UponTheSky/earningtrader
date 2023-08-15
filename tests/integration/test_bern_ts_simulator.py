@@ -29,4 +29,4 @@ def test_entier_simulation(controller: BernTSController):
     reward_history = storage.load_data(key="reward_history")
 
     assert len(reward_history) == 10
-    assert all(map(lambda x: 0 <= x <= 1.0, reward_history))
+    assert all(map(lambda x: 0 <= x.reward <= 1.0, reward_history))
