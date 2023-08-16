@@ -1,4 +1,4 @@
-# RL Trader
+# earningtrader
 A trading platform based on the Reinforcement Learning framework
 
 ## Getting Started

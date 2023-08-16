@@ -1,6 +1,6 @@
 import pytest
 
-from rl_trader.controller.bernoulli_ts_simulator import (
+from earningtrader.controller.bernoulli_ts_simulator import (
     BernTSControllerBuilder,
     BernTSController,
 )

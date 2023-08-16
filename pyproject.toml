@@ -1,5 +1,5 @@
 [project]
-name = "rl_trader"
+name = "earningtrader"
 version = "0.1.0"
 description = "A trading platform based on the Reinforcement Learning framework"
 authors = [
@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [project.urls]
-"Github Repository" = "https://github.com/uponTheSky/rl-trader"
+"Github Repository" = "https://github.com/uponTheSky/earningtrader"
 
 [build-system]
 requires = ["pdm-backend"]

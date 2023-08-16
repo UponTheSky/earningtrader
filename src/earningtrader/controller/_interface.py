@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from rl_trader.model import (
+from earningtrader.model import (
     StateInterface,
     ActionInterface,
     RewardInterface,

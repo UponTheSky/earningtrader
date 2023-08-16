@@ -2,7 +2,7 @@ import pathlib
 
 import pytest
 
-from rl_trader.storage.shelve_storage import ShelveStorage
+from earningtrader.storage.shelve_storage import ShelveStorage
 
 
 class TestObject:
