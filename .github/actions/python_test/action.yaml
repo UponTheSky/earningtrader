@@ -9,15 +9,11 @@ runs:
         pdm run coverage run -m pytest
         pdm run coverage xml -o ./coverage_report.xml
       shell: bash
-    # using: https://github.com/codecov/codecov-action
-    - name: upload code coverage to Codecov
-      uses: codecov/codecov-action@v3
+    # using: https://github.com/dorny/test-reporter
+    - name: test coverage report
+      uses: dorny/test-reporter@v1
+      if: success() || failure()    # run this step even if previous step failed
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        directory: ./
-        env_vars: OS,PYTHON
-        fail_ci_if_error: true
-        files: ./coverage_report.xml
-        flags: pytest
-        name: codecov-umbrella
-        verbose: true
+        name: Python Tests            # Name of the check run which will be created
+        path: ./coverage_report.xml    # Path to test results
+        reporter: jest-junit
