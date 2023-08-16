@@ -6,7 +6,7 @@ groups = ["default", "format", "lint", "test"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:f5ac4da59802ad8e40d2eb89b15c982dbb3b8c4652b8c6b613911ab703ab87a2"
+content_hash = "sha256:2e8506169883eac3bf20d7b25474af57c52b7e9057d4bc00ba33c3ce8a96c4bb"
 
 [[package]]
 name = "appdirs"
