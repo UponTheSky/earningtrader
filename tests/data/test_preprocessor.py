@@ -3,8 +3,8 @@ import pytest
 import pandas as pd
 import numpy as np
 
-from rl_trader.data.preprocessing.preprocessor import DataPreprocessor
-from rl_trader.common.exceptions import ValidationError
+from earningtrader.data.preprocessing.preprocessor import DataPreprocessor
+from earningtrader.common.exceptions import ValidationError
 
 
 @pytest.fixture

@@ -2,7 +2,7 @@ from typing import Literal, Any
 
 import pandas as pd
 
-from rl_trader.common.exceptions import ValidationError
+from earningtrader.common.exceptions import ValidationError
 from ._interface import DataPreprocessorInterface
 
 

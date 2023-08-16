@@ -1,4 +1,4 @@
-from rl_trader.data.acquisition.yfinance import YFinanceFetcher
+from earningtrader.data.acquisition.yfinance import YFinanceFetcher
 
 
 def test_yfinance_fetch_history_data():

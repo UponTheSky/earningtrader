@@ -1,6 +1,6 @@
 import pytest
 
-from rl_trader.model.bernoulli_ts import (
+from earningtrader.model.bernoulli_ts import (
     BernTSTradingModel,
     BernTSState,
     BernTSAction,

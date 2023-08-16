@@ -1,16 +1,16 @@
 import logging
 
-from rl_trader.data.acquisition.yfinance import YFinanceFetcher
-from rl_trader.data.preprocessing.preprocessor import DataPreprocessor
-from rl_trader.model import StateInterface
-from rl_trader.model.bernoulli_ts import (
+from earningtrader.data.acquisition.yfinance import YFinanceFetcher
+from earningtrader.data.preprocessing.preprocessor import DataPreprocessor
+from earningtrader.model import StateInterface
+from earningtrader.model.bernoulli_ts import (
     BernTSAction,
     BernTSReward,
     BernTSState,
     BernTSTradingModel,
 )
-from rl_trader.trader.simulation_trader import SimulationTrader
-from rl_trader.storage.shelve_storage import ShelveStorage
+from earningtrader.trader.simulation_trader import SimulationTrader
+from earningtrader.storage.shelve_storage import ShelveStorage
 
 from ._interface import ControllerInterface, ControllerBuilderInterface
 from ._logger import PythonFileLogger
