@@ -1,4 +1,5 @@
 import logging
+import os
 
 from earningtrader.data.acquisition.yfinance import YFinanceFetcher
 from earningtrader.data.preprocessing.preprocessor import DataPreprocessor
@@ -32,16 +33,16 @@ class BernTSController(ControllerInterface):
     _stdout_logger: PythonFileLogger
     _stderr_logger: PythonFileLogger
 
-    def __init__(self) -> None:
+    def __init__(self, *, logfile_dir: str) -> None:
         self._stdout_logger = PythonFileLogger(
             logger_name="bern_ts_controller_stdout_logger",
-            filepath="bern_ts_stdout.log",
+            filepath=os.path.join(logfile_dir, "bern_ts_stdout.log"),
             message_format="[log]: %(asctime)s %(message)s",
         )
 
         self._stderr_logger = PythonFileLogger(
             logger_name="bern_ts_controller_stderr_logger",
-            filepath="bern_ts_stderr.log",
+            filepath=os.path.join(logfile_dir, "bern_ts_stderr.log"),
             message_format="[error]: %(asctime)s %(message)s",
         )
 
@@ -133,8 +134,8 @@ class BernTSControllerBuilder(ControllerBuilderInterface):
 
         return self._controller
 
-    def initialize(self) -> None:
-        self._controller = BernTSController()
+    def initialize(self, *, logfile_dir: str) -> None:
+        self._controller = BernTSController(logfile_dir=logfile_dir)
 
     def set_data_fetcher(self) -> None:
         self._controller._data_fetcher = YFinanceFetcher()
@@ -166,8 +167,8 @@ class BernTSControllerBuilder(ControllerBuilderInterface):
     def set_trader(self) -> None:
         self._controller._trader = SimulationTrader()
 
-    def set_storage(self) -> None:
-        storage = ShelveStorage(db_path="temp_storage.shelve")
+    def set_storage(self, *, db_path: str) -> None:
+        storage = ShelveStorage(db_path=db_path)
         storage.store_data(key="previous_buy_price", value=100.0)
         storage.store_data(key="reward_history", value=[])
 

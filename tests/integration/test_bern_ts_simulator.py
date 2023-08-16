@@ -1,3 +1,5 @@
+import pathlib
+
 import pytest
 
 from earningtrader.controller.bernoulli_ts_simulator import (
@@ -7,13 +9,13 @@ from earningtrader.controller.bernoulli_ts_simulator import (
 
 
 @pytest.fixture
-def controller() -> BernTSController:
+def controller(tmp_path: pathlib.Path) -> BernTSController:
     builder = BernTSControllerBuilder()
-    builder.initialize()
+    builder.initialize(logfile_dir=str(tmp_path))
     builder.set_data_fetcher()
     builder.set_data_preprocessor()
     builder.set_trading_model()
-    builder.set_storage()
+    builder.set_storage(db_path=str(tmp_path / "temp_storage.shelve"))
     builder.set_trader()
 
     return builder.controller()

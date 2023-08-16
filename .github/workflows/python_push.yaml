@@ -1,4 +1,4 @@
-name: 'Python Push Check'
+name: Python Push Check
 
 on:
   push:
