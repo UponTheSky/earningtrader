@@ -2,7 +2,7 @@ name: Test Python Project
 
 on: workflow_call
 
-job:
+jobs:
   test-python-project:
     runs-on: ubuntu-latest
     steps:
