@@ -37,7 +37,7 @@ There are five main components in the project.
 2. Data Preprocessor: A preprocessor attempts to refine the retrieved data from a data acquisition component.
 
 3. RL Algorithmic Model: A reinforcement learning algorithm must be implemented to integrate with the system. That is, you need to define
-  - class
+  - state
   - a collection of actions
   - reward
 

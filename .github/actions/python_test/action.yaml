@@ -6,8 +6,7 @@ runs:
   steps:
     - name: run pytest and generate code coverage report
       run: |
-        pdm run coverage run -m pytest
-        pdm run coverage xml -o ./coverage_report.xml
+        pdm run pytest tests -v --cache-clear --junitxml=./coverage_report.xml
       shell: bash
     # using: https://github.com/dorny/test-reporter
     - name: test coverage report
@@ -16,4 +15,4 @@ runs:
       with:
         name: Python Tests            # Name of the check run which will be created
         path: ./coverage_report.xml    # Path to test results
-        reporter: jest-junit
+        reporter: java-junit
