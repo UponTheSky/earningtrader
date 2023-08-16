@@ -25,6 +25,11 @@ build-backend = "pdm.backend"
 test = ["pytest>=7.4.0", "coverage>=7.3.0"]
 lint = ["ruff>=0.0.282"]
 format = ["black>=23.7.0"]
+jupyter = [
+    "notebook>=7.0.2",
+    "jupyter>=1.0.0",
+    "matplotlib>=3.7.2",
+]
 
 [tool.pdm.scripts]
 test = "pytest tests"
