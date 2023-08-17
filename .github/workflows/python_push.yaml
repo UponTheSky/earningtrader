@@ -4,6 +4,12 @@ on:
   push:
     paths:
       - '**.py'
+      - '**.yaml'
+
+permissions:
+  checks: write
+  contents: write
+  pull-requests: write
 
 # reference: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 jobs:
