@@ -1,6 +1,6 @@
 [project]
 name = "earningtrader"
-version = "0.1.0"
+version = "0.1.1"
 description = "A trading platform based on the Reinforcement Learning framework"
 authors = [{ name = "UponTheSky", email = "sailing.to.orbis@gmail.com" }]
 requires-python = ">=3.9"
@@ -12,11 +12,7 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
 ]
 
-dependencies = [
-    "yfinance>=0.2.27",
-    "numpy>=1.25.2",
-    "pandas>=2.0.3",
-]
+dependencies = ["yfinance>=0.2.27", "numpy>=1.25.2", "pandas>=2.0.3"]
 
 [project.urls]
 "Github Repository" = "https://github.com/uponTheSky/earningtrader"
@@ -26,9 +22,7 @@ requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 [tool.pdm.dev-dependencies]
-test = [
-    "pytest>=7.4.0",
-]
+test = ["pytest>=7.4.0"]
 lint = ["ruff>=0.0.282"]
 format = ["black>=23.7.0"]
 jupyter = ["notebook>=7.0.2", "jupyter>=1.0.0", "matplotlib>=3.7.2"]
