@@ -11,11 +11,12 @@ This library assumes that:
 - your operating system is either MacOS or Linux(We haven't tested Windows yet, but we will work on it in the near future)
 
 ### Installation
-Install the project via `pip`(Currently we only serve [PyPI](https://pypi.org/)):
+(**Remark**) Since we won't release the package as a usuable one in production environment yet, currently you can only install the package fromo the [TestPyPI](https://test.pypi.org/).
 
 ```sh
-pip3 install earningtrader
+pip install -i https://test.pypi.org/simple/ earningtrader
 ```
+
 
 ### Hands-On Examples
 (**Remark**) Note that the overall architectural design is premature; we will improve in the future updates.
