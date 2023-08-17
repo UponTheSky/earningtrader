@@ -2,12 +2,13 @@ name: 'Publish Python Project'
 
 on:
   release:
-    types: [published, prereleased]
+    types: [released, prereleased]
 
 permissions:
   checks: write
   contents: write
   pull-requests: write
+  id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
 
 jobs:
   test-python-project:
@@ -16,10 +17,9 @@ jobs:
   # reference: https://pdm.fming.dev/latest/usage/publish/#publish-with-trusted-publishers
   pypi-publish:
     name: upload release to (Test)PyPI
+    needs: test-python-project
     runs-on: ubuntu-latest
-    permissions:
-      # IMPORTANT: this permission is mandatory for trusted publishing
-      id-token: write
+    environment: python_publish
     steps:
       - uses: actions/checkout@v3
       - uses: pdm-project/setup-pdm@v3
